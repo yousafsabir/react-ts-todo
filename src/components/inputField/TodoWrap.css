@@ -1,0 +1,26 @@
+.todo-wrap {
+    width: 100%;
+    background-color: coral;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-size: 1.25rem;
+}
+.todo-wrap .right > * {
+    cursor: pointer;
+}
+.todo-wrap .right > *:active {
+    transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -ms-transform: scale(0.85);
+    -o-transform: scale(0.85);
+}
+.todo-wrap .right > * + * {
+    margin-left: 0.25rem;
+}
