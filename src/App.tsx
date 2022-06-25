@@ -18,6 +18,33 @@ const App: React.FC = () => {
             console.log(todos);
         }
     };
+    const handleDel = (id: number): void => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+    const handleEdit = (id: number, todo: string): void => {
+        setTodos(
+            todos.map((item) => {
+                if (item.id === id) {
+                    return { ...item, todo };
+                } else {
+                    return item;
+                }
+            })
+        );
+    };
+    const handleDone = (id: number) => {
+        setTodos(
+            todos.map((item) => {
+                if (item.id === id) {
+                    console.log("inside");
+
+                    return { ...item, isDone: true };
+                } else {
+                    return item;
+                }
+            })
+        );
+    };
     return (
         <div className="App">
             <header className="App-header">
@@ -25,9 +52,17 @@ const App: React.FC = () => {
             </header>
             <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
             <div className="card-grid">
-            {todos.map((todo) => {
-                return <TodoWrap key={todo.id} {...todo} />;
-            })}
+                {todos.map((todo) => {
+                    return (
+                        <TodoWrap
+                            key={todo.id}
+                            {...todo}
+                            delIt={handleDel}
+                            editIt={handleEdit}
+                            doneIt={handleDone}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
